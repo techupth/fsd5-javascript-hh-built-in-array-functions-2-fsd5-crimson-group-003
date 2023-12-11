@@ -378,11 +378,7 @@ function checkTotalByLocation(Object) {
 
   Object.forEach((obj) => {
     const location = obj.location;
-    console.log(location)
-
     const total = obj.total;
-
-    console.log(totalSumByLocation[location]);
 
     if (!totalSumByLocation[location]) {
       totalSumByLocation[location] = total;

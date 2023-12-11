@@ -374,4 +374,23 @@ const bills = [
 ];
 
 // Start coding here
-const totalMembers;
+const newBills = bills.filter((memberIsNotNull) => {
+  return memberIsNotNull.member !== null;
+});
+
+function countMemberNameNotSame(stringArray) {
+  let newArray = new Set(stringArray);
+  let count = 0;
+
+  stringArray.forEach((bill) => {
+    if (!newArray.has(bill.member.name)) {
+      newArray.add(bill.member.name);
+      count++;
+    }
+  });
+  console.log(newArray);
+  return count;
+}
+
+const totalMembers = countMemberNameNotSame(newBills);
+console.log(`Unique Members Count: ${totalMembers}`);

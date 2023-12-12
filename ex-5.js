@@ -1,7 +1,21 @@
-let crimeRecordNames = ["Theodora Milenko", "Tinashe Benigno", "Mahalia Priyanka", "Maisy Sudhir"];
+let crimeRecordNames = [
+  "Theodora Milenko",
+  "Tinashe Benigno",
+  "Mahalia Priyanka",
+  "Maisy Sudhir",
+];
 
 function searchCrimeRecord(name) {
   // Start coding here
+  if (
+    crimeRecordNames.reduce((crimeStatus, inRecord) => {
+      return crimeStatus || inRecord === name;
+    }, false)
+  ) {
+    return `${name} has crime record !!!`;
+  } else {
+    return `${name} has no crime record`;
+  }
 }
 
 //ผลลัพธ์ที่ควรได้จาก Example case

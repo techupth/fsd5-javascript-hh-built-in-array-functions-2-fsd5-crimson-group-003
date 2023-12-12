@@ -373,24 +373,41 @@ const bills = [
   },
 ];
 
-// Start coding here
-const newBills = bills.filter((memberIsNotNull) => {
-  return memberIsNotNull.member !== null;
-});
+const totalMembers = bills
+ .filter(function (bill){
+  return bill.member !==null;
+ })
 
-function countMemberNameNotSame(stringArray) {
-  let newArray = new Set(stringArray);
-  let count = 0;
+ .map(function(bill){
+  return bill.member.name;
+ })
 
-  stringArray.forEach((bill) => {
-    if (!newArray.has(bill.member.name)) {
-      newArray.add(bill.member.name);
-      count++;
+ .reduce(function(uniqueMembers,memberName){
+    if(!uniqueMembers.includes(memberName)){
+      uniqueMembers.push(memberName);
     }
-  });
-  console.log(newArray);
-  return count;
-}
+    return uniqueMembers
+ },[]).length;
+console.log(totalMembers);
 
-const totalMembers = countMemberNameNotSame(newBills);
-console.log(`Unique Members Count: ${totalMembers}`);
+// My-Note
+// const newBills = bills.filter((memberIsNotNull) => {
+//   return memberIsNotNull.member !== null;
+// });
+
+// function countMemberNameNotSame(stringArray) {
+//   let newArray = new Set(stringArray);
+//   let count = 0;
+
+//   stringArray.forEach((bill) => {
+//     if (!newArray.has(bill.member.name)) {
+//       newArray.add(bill.member.name);
+//       count++;
+//     }
+//   });
+//   console.log(newArray);
+//   return count;
+// }
+
+// const totalMembers = countMemberNameNotSame(newBills);
+// console.log(`Unique Members Count: ${totalMembers}`);
